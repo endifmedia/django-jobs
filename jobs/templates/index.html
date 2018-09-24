@@ -1,0 +1,41 @@
+{% include "header.html" %}
+
+<div id="main">
+  <div class="inner">
+
+    <section class="intro">
+      <h1>HIRE LAFAYETTE</h1>
+      <p></p>
+      <a href="#" class="button primary">Post a job for $99/month</a>
+    </section>
+
+
+    <section class="jobs">
+
+      <ul class="jobs">
+
+        {% for job_list in job_list %}
+
+        <li {% if job_list.featured == True %} class="feature" {% endif %}>
+
+          {% if job_list.logo|length > 0 %}
+          <span class="companylogo">
+            <img src="{{job_list.logo.url}}">
+          </span>
+          {{STATIC_URL}}
+          {% endif %}
+          <span class="company">{{job_list.company}}</span>
+          <span class="title"><a>{{job_list.title}}</a></span>
+          <span class="date">{{job_list.published}}</span>
+
+        </li>
+
+        {% endfor %}
+
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+{% include "footer.html" %}
